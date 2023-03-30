@@ -1,0 +1,23 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "concat_space": {
+            "spacing": "one"
+        },
+        "new_with_braces": {
+            "anonymous_class": false,
+            "named_class": false
+        },
+        "ordered_imports": {
+            "sort_algorithm": "length"
+        },
+        "ordered_traits": true,
+        "return_type_declaration": {
+            "space_before": "one"
+        },
+        "single_import_per_statement": {
+            "group_to_single_imports": true
+        },
+        "use_arrow_functions": true
+    }
+}
