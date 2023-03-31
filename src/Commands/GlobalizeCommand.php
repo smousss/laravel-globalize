@@ -17,6 +17,12 @@ class GlobalizeCommand extends Command
 
     public function handle() : int
     {
+        if (empty(config('globalize.secret_key'))) {
+            $this->error('Please generate a secret key on smousss.com and add it to your .env file as SMOUSSS_SECRET_KEY.');
+
+            return self::FAILURE;
+        }
+
         $views = $this->getViews();
 
         $choice = $this->choice('Should Smousss process a particular file or everything?', [
