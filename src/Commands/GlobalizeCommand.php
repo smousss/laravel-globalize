@@ -25,6 +25,12 @@ class GlobalizeCommand extends Command
 
         $views = $this->getViews();
 
+        if ($views->isEmpty()) {
+            $this->error('Your project does not seem to have any views.');
+
+            return self::FAILURE;
+        }
+
         $choice = $this->choice('Should Smousss process a particular file or everything?', [
             'Choose files',
             'Process everything!',
