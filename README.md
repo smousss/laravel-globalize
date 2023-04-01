@@ -6,7 +6,7 @@
 
 ## Documentation
 
-Globalize for Laravel documentation is accessible here: https://smousss.com/docs/laravel/globalize
+Globalize for Laravel documentation is accessible here: https://smousss.com
 
 ## Credits
 
