@@ -2,9 +2,13 @@
     "name": "smousss/laravel-globalize",
     "description": "Internationalize Laravel projects in a matter of seconds!",
     "keywords": [
-        "smousss",
+        "i18n",
+        "internationalization",
         "laravel",
-        "laravel-globalize"
+        "laravel-globalize",
+        "localization",
+        "smousss",
+        "translation"
     ],
     "homepage": "https://github.com/smousss/laravel-globalize",
     "license": "MIT",
