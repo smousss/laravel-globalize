@@ -4,7 +4,7 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/smousss/laravel-globalize/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/smousss/laravel-globalize/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/smousss/laravel-globalize.svg?style=flat-square)](https://packagist.org/packages/smousss/laravel-globalize)
 
-Wrapping up every translatable piece of text in every view of an existing Laravel project is a time-consuming and boring assignment. Luckily, GPT-4 is perfectly suited for repetitive actions.
+Wrapping up every translatable piece of text with the `__()` helper in every view of an existing Laravel project is a time-consuming and boring assignment. Luckily, GPT-4 is perfectly suited for repetitive actions.
 
 ```diff
 -<h2>Create a new post</h2>
@@ -35,16 +35,18 @@ php artisan vendor:publish --tag=globalize-config
 
 First, [generate a secret key](https://smousss.com/dashboard) on smousss.com.
 
-Then, internationalize your views:
+Then, add it to your `SMOUSSS_SECRET_KEY` environment variable.
+
+Finally, internationalize your views:
 
 ```bash
 php artisan smousss:globalize
 ```
 
-Globalize will ask you if you want to globalize all your views or a selection of them.
+Globalize will ask you if you want to process all your views or a selection of them.
 
 ```bash
-Should Smousss process a particular file or everything? [Choose files]:
+Should Globalize process a particular file or everything? [Choose files]:
 [0] Choose files
 [1] Process everything!
 ```
