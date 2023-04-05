@@ -31,7 +31,7 @@ class GlobalizeCommand extends Command
             return self::FAILURE;
         }
 
-        $choice = $this->choice('Should Smousss process a particular file or everything?', [
+        $choice = $this->choice('Should Globalize process a particular file or everything?', [
             'Choose files',
             'Process everything!',
         ], 0);
