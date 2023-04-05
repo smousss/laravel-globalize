@@ -4,6 +4,19 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/smousss/laravel-globalize/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/smousss/laravel-globalize/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/smousss/laravel-globalize.svg?style=flat-square)](https://packagist.org/packages/smousss/laravel-globalize)
 
+Wrapping up every translatable piece of text in every view of an existing Laravel project is a time-consuming and boring assignment. Luckily, GPT-4 is perfectly suited for repetitive actions.
+
+```diff
+-<h2>Create a new post</h2>
++<h2>{{ __('Create a new post') }}</h2>
+…
+-<footer>© {{ config('app.name') }} {{ date('Y') }}. All rights reserved.</footer>
++<footer>{{ __('© :name :date. All rights reserved.', [
++    'name' => config('app.name'),
++    'date' => date('Y'),
++]) }}</footer>
+```
+
 ## Installation
 
 Install the package via Composer:
