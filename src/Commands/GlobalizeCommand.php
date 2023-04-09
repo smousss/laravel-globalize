@@ -66,7 +66,8 @@ class GlobalizeCommand extends Command
         $this->line("GPT-4 is generating tokens for {$fileRelativePath}… (GPT-4 can be slow sometimes, but don't worry!)");
 
         $response = Http::withToken(config('globalize.secret_key'))
-            ->timeout(600)
+            ->timeout(300)
+            ->retry(3)
             ->post(config('novalize.debug', false)
                 ? 'https://smousss.test/api/globalize'
                 : 'https://smousss.com/api/globalize', compact('content'))
