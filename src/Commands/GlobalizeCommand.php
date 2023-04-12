@@ -68,6 +68,7 @@ class GlobalizeCommand extends Command
         $response = Http::withToken(config('globalize.secret_key'))
             ->timeout(300)
             ->retry(3)
+            ->withHeaders(['Accept' => 'application/json'])
             ->post(config('novalize.debug', false)
                 ? 'https://smousss.test/api/globalize'
                 : 'https://smousss.com/api/globalize', compact('content'))
