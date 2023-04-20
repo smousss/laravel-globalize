@@ -71,7 +71,7 @@ class GlobalizeCommand extends Command
                 ->timeout(300)
                 ->retry(3)
                 ->withHeaders(['Accept' => 'application/json'])
-                ->post(config('novalize.debug', false)
+                ->post(config('globalize.debug', false)
                     ? 'https://smousss.test/api/globalize'
                     : 'https://smousss.com/api/globalize', compact('content'))
                 ->throw()
