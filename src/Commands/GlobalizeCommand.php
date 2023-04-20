@@ -8,6 +8,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\RequestException;
 
 class GlobalizeCommand extends Command
 {
@@ -36,7 +37,7 @@ class GlobalizeCommand extends Command
             'Process everything!',
         ], 0);
 
-        if ($choice === 'Choose files') {
+        if ('Choose files' === $choice) {
             $choices = $this->choice('Which file should Smousss process?', $views->toArray(), 0, null, true);
 
             collect($choices)->each($this->processView(...));
@@ -51,7 +52,7 @@ class GlobalizeCommand extends Command
         return self::SUCCESS;
     }
 
-    protected function processView(string $filePath, int $key) : void
+    protected function processView(string $filePath, int $key)
     {
         $content = File::get($filePath);
 
@@ -65,19 +66,23 @@ class GlobalizeCommand extends Command
 
         $this->line("GPT-4 is generating tokens for {$fileRelativePath}… (GPT-4 can be slow sometimes, but don't worry!)");
 
-        $response = Http::withToken(config('globalize.secret_key'))
-            ->timeout(300)
-            ->retry(3)
-            ->withHeaders(['Accept' => 'application/json'])
-            ->post(config('novalize.debug', false)
-                ? 'https://smousss.test/api/globalize'
-                : 'https://smousss.com/api/globalize', compact('content'))
-            ->throw()
-            ->json();
+        try {
+            $response = Http::withToken(config('globalize.secret_key'))
+                ->timeout(300)
+                ->retry(3)
+                ->withHeaders(['Accept' => 'application/json'])
+                ->post(config('novalize.debug', false)
+                    ? 'https://smousss.test/api/globalize'
+                    : 'https://smousss.com/api/globalize', compact('content'))
+                ->throw()
+                ->json();
 
-        File::put($filePath, $response['data'] . ($shouldAddNewLineAtEOF ? PHP_EOL : ''));
+            File::put($filePath, $response['data'] . ($shouldAddNewLineAtEOF ? PHP_EOL : ''));
 
-        $this->info("Finished processing $fileRelativePath ✅ (Consumed tokens: " . $response['meta']['consumed_tokens'] . ')');
+            $this->info("Finished processing $fileRelativePath ✅ (Tokens: " . $response['meta']['consumed_tokens'] . ')');
+        } catch (RequestException $e) {
+            $this->error($e->response->json()['message'] ?? 'Unknown error.');
+        }
     }
 
     protected function getViews() : Collection
