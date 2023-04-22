@@ -1,10 +1,12 @@
-# Globalize for Laravel
+![Globalize](https://user-images.githubusercontent.com/3613731/233782928-31e9677d-4c0c-4726-923e-ce6a7086c85d.png)
+
+# Make entire Laravel projects translatable
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/smousss/laravel-globalize.svg?style=flat-square)](https://packagist.org/packages/smousss/laravel-globalize)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/smousss/laravel-globalize/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/smousss/laravel-globalize/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/smousss/laravel-globalize.svg?style=flat-square)](https://packagist.org/packages/smousss/laravel-globalize)
 
-Wrapping up every translatable piece of text with the `__()` helper in every view of an existing Laravel project is a time-consuming and boring assignment. Luckily, GPT-4 is perfectly suited for repetitive actions.
+Wrapping up every translatable piece of text in every view of an existing Laravel project inside the __() helper is a time-consuming and boring assignment. Luckily, artificial intelligence is perfectly suited for repetitive actions.
 
 ```diff
 -<h2>Create a new post</h2>
